@@ -1,9 +1,9 @@
 blog:
-  url: https://yeonyeon.tistory.com
-  contents-class-name: post-item
-  title-class-name: title
-  summary-class-name: excerpt
+  url: https://study-note10.tistory.com
+  contents-class-name: post
+  title-class-name: tit
+  summary-class-name: summary
   date-class-name: date
 
 github:
-  repo-name: yeon-06/yeon-06
+  repo-name: unifolio0/unifolio0
