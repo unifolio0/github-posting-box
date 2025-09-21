@@ -74,8 +74,11 @@ public class PostingService {
     }
 
     private String generateContents(Boards boards) {
-        String fileContents = FileUtil.findFileContent(RESOURCE_PATH + "/templates/default.md");
-        return ContentsGenerateUtil.toContents(fileContents, boards, blogInfo.getUrl());
+        String topContents = FileUtil.findFileContent(RESOURCE_PATH + "/templates/top.md");
+        String contents = ContentsGenerateUtil.toContents(topContents, boards, blogInfo.getUrl());
+        String bottomContents = FileUtil.findFileContent(RESOURCE_PATH + "/templates/bottom.md");
+
+        return contents + System.lineSeparator() + bottomContents;
     }
 
     private void uploadFiles(Boards boards, Map<String, File> imageFiles, String branch) {

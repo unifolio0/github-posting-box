@@ -62,7 +62,8 @@
 #### 4. 리드미 템플릿 변경
 
 - 포스팅 목록은 리드미 하단에 테이블 형태로 추가된다.
-- 리드미 상단에 작성될 글은 [`/src/main/resources/templates/default.md`](./src/main/resources/templates/default.md)에 작성한다.
+- 리드미 상단에 작성될 글은 [`/src/main/resources/templates/top.md`](./src/main/resources/templates/top.md)에 작성한다.
+- 리드미 하단에 작성될 글은 [`/src/main/resources/templates/bottom.md`](./src/main/resources/templates/bottom.md)에 작성한다.
 
 ![](./docs/update.png)
 
