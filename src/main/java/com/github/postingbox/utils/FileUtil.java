@@ -54,6 +54,11 @@ public class FileUtil {
 			graphics.dispose();
 
 			File file = new File(filePath);
+			// 부모 디렉토리가 없으면 생성
+			File parentDir = file.getParentFile();
+			if (parentDir != null && !parentDir.exists()) {
+				parentDir.mkdirs();
+			}
 			ImageIO.write(resizedBufferedImage, "png", file);
 			return file;
 

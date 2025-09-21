@@ -90,15 +90,23 @@ public class PostingService {
 
     private Map<String, File> generateImageFiles(Boards boards) {
         Map<String, File> imageFiles = new HashMap<>();
+        // 임시 디렉토리 사용
+        String tempDir = System.getProperty("java.io.tmpdir");
+
         for (Board board : boards.getValue()) {
-            String fileName = ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE) + IMG_TYPE;
-            board.setResizedImageName(fileName);
-            File file = FileUtil.resize(
-                board.getImage(),
-                RESOURCE_PATH + fileName,
-                boards.getMinImageSize());
-            if (file != null) {
-                imageFiles.put(fileName, file);
+            if (board.getImage() != null) {
+                String fileName = ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE) + IMG_TYPE;
+                String filePath = tempDir + File.separator + fileName;
+
+                File file = FileUtil.resize(
+                    board.getImage(),
+                    filePath,
+                    boards.getMinImageSize());
+
+                if (file != null) {
+                    board.setResizedImageName(fileName);
+                    imageFiles.put(fileName, file);
+                }
             }
         }
         return imageFiles;
