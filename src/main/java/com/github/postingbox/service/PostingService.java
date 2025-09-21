@@ -82,6 +82,7 @@ public class PostingService {
             String imageName = board.getResizedImageName();
             if (imageFiles.containsKey(imageName)) {
                 String imagePath = String.format("%s/%s", IMG_DIRECTORY_NAME, imageName);
+                System.out.println("imagePath: " + imagePath);
                 byte[] content = FileUtil.findFileContent(imageFiles.get(imageName));
                 gitHubClient.uploadFile(imagePath, content, branch);
             }
@@ -94,6 +95,7 @@ public class PostingService {
         String tempDir = System.getProperty("java.io.tmpdir");
 
         for (Board board : boards.getValue()) {
+            System.out.println(board.getImage());
             if (board.getImage() != null) {
                 String fileName = ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE) + IMG_TYPE;
                 String filePath = tempDir + File.separator + fileName;

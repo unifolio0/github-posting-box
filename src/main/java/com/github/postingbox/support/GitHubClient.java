@@ -85,6 +85,7 @@ public class GitHubClient {
 				.commit();
 
 		} catch (IOException e) {
+			System.out.println("파일 업로드 실패" + e);
 			throw new GitHubApiException("파일 업로드 실패", e);
 		}
 	}

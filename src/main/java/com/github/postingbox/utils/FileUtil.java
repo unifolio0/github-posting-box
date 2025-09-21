@@ -83,6 +83,7 @@ public class FileUtil {
 		}
 		try {
 			URL url = new URL(path);
+			System.out.println("image url: " + url);
 			return ImageIO.read(url);
 		} catch (IOException e) {
 			String message = String.format("BufferedImage로 변환할 수 없습니다. -> path: %s", path);
