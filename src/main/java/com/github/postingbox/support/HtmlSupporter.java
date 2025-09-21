@@ -44,7 +44,10 @@ public class HtmlSupporter {
 		return contents.stream()
 			.collect(Collectors.toMap(
 				this::extractLink,
-				it -> it.getElementsByTag("img").attr("src"),
+				it -> {
+					Element firstImg = it.getElementsByTag("img").first();
+					return firstImg != null ? firstImg.attr("src") : "";
+				},
 				(existing, replacement) -> existing.isEmpty() ? replacement : existing
 			));
 	}
