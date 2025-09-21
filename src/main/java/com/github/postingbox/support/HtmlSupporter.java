@@ -44,7 +44,8 @@ public class HtmlSupporter {
 		return contents.stream()
 			.collect(Collectors.toMap(
 				this::extractLink,
-				it -> it.getElementsByTag("img").attr("src")
+				it -> it.getElementsByTag("img").attr("src"),
+				(existing, replacement) -> existing.isEmpty() ? replacement : existing
 			));
 	}
 
@@ -53,7 +54,8 @@ public class HtmlSupporter {
 		return contents.stream()
 			.collect(Collectors.toMap(
 				this::extractLink,
-				it -> extractText(it, className)
+				it -> extractText(it, className),
+				(existing, replacement) -> existing.isEmpty() ? replacement : existing
 			));
 	}
 
