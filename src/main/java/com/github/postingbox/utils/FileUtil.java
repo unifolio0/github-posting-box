@@ -40,6 +40,9 @@ public class FileUtil {
 	}
 
 	public static File resize(BufferedImage bufferedImage, String filePath, ImageSizeDto imageSize) {
+		if (bufferedImage == null) {
+			return null;
+		}
 		try {
 			BufferedImage resizedBufferedImage = new BufferedImage(imageSize.getWidth(), imageSize.getHeight(), bufferedImage.getType());
 
@@ -70,6 +73,9 @@ public class FileUtil {
 	}
 
 	public static BufferedImage toBufferedImage(String path) {
+		if (path == null || path.trim().isEmpty()) {
+			return null;
+		}
 		try {
 			URL url = new URL(path);
 			return ImageIO.read(url);

@@ -80,9 +80,11 @@ public class PostingService {
     private void uploadFiles(Boards boards, Map<String, File> imageFiles, String branch) {
         for (Board board : boards.getValue()) {
             String imageName = board.getResizedImageName();
-            String imagePath = String.format("%s/%s", IMG_DIRECTORY_NAME, imageName);
-            byte[] content = FileUtil.findFileContent(imageFiles.get(imageName));
-            gitHubClient.uploadFile(imagePath, content, branch);
+            if (imageFiles.containsKey(imageName)) {
+                String imagePath = String.format("%s/%s", IMG_DIRECTORY_NAME, imageName);
+                byte[] content = FileUtil.findFileContent(imageFiles.get(imageName));
+                gitHubClient.uploadFile(imagePath, content, branch);
+            }
         }
     }
 
@@ -95,7 +97,9 @@ public class PostingService {
                 board.getImage(),
                 RESOURCE_PATH + fileName,
                 boards.getMinImageSize());
-            imageFiles.put(fileName, file);
+            if (file != null) {
+                imageFiles.put(fileName, file);
+            }
         }
         return imageFiles;
     }

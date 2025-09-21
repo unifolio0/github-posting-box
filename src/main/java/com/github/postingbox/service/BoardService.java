@@ -37,8 +37,14 @@ public class BoardService {
 	}
 
 	private String convertImageLink(final String imageLink) {
+		if (imageLink == null || imageLink.trim().isEmpty()) {
+			return "";
+		}
 		if (imageLink.startsWith(LINK_START_STRING)) {
 			return imageLink;
+		}
+		if (imageLink.startsWith("//")) {
+			return LINK_START_STRING + imageLink;
 		}
 		return LINK_START_STRING + imageLink;
 	}

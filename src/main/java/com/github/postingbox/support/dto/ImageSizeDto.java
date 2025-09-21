@@ -20,6 +20,10 @@ public class ImageSizeDto {
 	}
 
 	public static ImageSizeDto of(BufferedImage bufferedImage) {
+		if (bufferedImage == null) {
+			return of();
+		}
+
 		int height = bufferedImage.getHeight();
 		int width = bufferedImage.getWidth();
 
