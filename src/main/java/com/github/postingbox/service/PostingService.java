@@ -95,7 +95,7 @@ public class PostingService {
         String tempDir = System.getProperty("java.io.tmpdir");
 
         for (Board board : boards.getValue()) {
-            System.out.println(board.getImage());
+            System.out.println("board.getImage(): " + board.getImage());
             if (board.getImage() != null) {
                 String fileName = ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE) + IMG_TYPE;
                 String filePath = tempDir + File.separator + fileName;

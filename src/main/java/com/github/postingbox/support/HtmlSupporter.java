@@ -46,6 +46,7 @@ public class HtmlSupporter {
 				this::extractLink,
 				it -> {
 					Element firstImg = it.getElementsByTag("img").first();
+					System.out.println("firstImg: " + firstImg);
 					return firstImg != null ? firstImg.attr("src") : "";
 				},
 				(existing, replacement) -> existing.isEmpty() ? replacement : existing
