@@ -47,7 +47,13 @@ public class HtmlSupporter {
 				it -> {
 					Element firstImg = it.getElementsByTag("img").first();
 					System.out.println("firstImg: " + firstImg);
-					return firstImg != null ? firstImg.attr("src") : "";
+					if (firstImg != null) {
+						// lazy loading 이미지의 경우 data-src 속성 확인
+						String src = firstImg.attr("src");
+						String dataSrc = firstImg.attr("data-src");
+						return !dataSrc.isEmpty() ? dataSrc : src;
+					}
+					return "";
 				},
 				(existing, replacement) -> existing.isEmpty() ? replacement : existing
 			));

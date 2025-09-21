@@ -68,6 +68,7 @@ public class PostingService {
             gitHubClient.merge(branch, commitMessage);
 
         } catch (Exception e) {
+            System.out.println("업데이트 중 오류 발생: " + e);
             gitHubClient.removeBranch(branch);
         }
     }
