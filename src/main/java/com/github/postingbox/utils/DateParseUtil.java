@@ -1,6 +1,7 @@
 package com.github.postingbox.utils;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 public class DateParseUtil {
 
@@ -9,7 +10,7 @@ public class DateParseUtil {
 
 	public static LocalDate parse(String text) {
 		if (text.contains(":")) {
-			return LocalDate.now();
+			return LocalDate.now(ZoneId.of("Asia/Seoul"));
 		}
 		String regex = findRegex(text);
 		String[] textArr = text.split(regex);
