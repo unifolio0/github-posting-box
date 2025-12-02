@@ -8,7 +8,9 @@ public class DateParseUtil {
 	}
 
 	public static LocalDate parse(String text) {
-		System.out.println("Parsing date text: " + text);
+		if (text.contains(":")) {
+			return LocalDate.now();
+		}
 		String regex = findRegex(text);
 		String[] textArr = text.split(regex);
 		return LocalDate.of(
